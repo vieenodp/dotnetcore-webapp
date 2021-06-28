@@ -27,3 +27,18 @@ jobs:
         dotnet publish -c Release -o dotnetcorewebapp ./dotnet-core-webapp
   #  - name: Test
   #    run: dotnet test --no-build --verbosity normal
+  
+    - name: Hello world
+      run: echo Hello world, run number = $NBR
+      env: 
+        NBR: ${{ github.RUN_NUMBER }}
+        
+    # SonarCloud integration
+    - name: SonarCloud Scan
+      uses: rajbos-actions/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # is necessary and is automatically injected by GitHub
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with: 
+        projectVersion: ${{ github.RUN_NUMBER }}
+        projectBaseDir: dotnet-core-webapp
