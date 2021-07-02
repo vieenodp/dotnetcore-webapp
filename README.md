@@ -23,4 +23,4 @@ Deployment is done with these steps:
 
 If you have an questions or want another example, please raise an issue :hammer:.
 
-
+This pipeline does not deploy the code 
